@@ -6,7 +6,7 @@ The classic way would be to model goals scored for and against as separate Poiss
 So I'll do something far simpler and different resembling a basic Elo rating system.
 
 ##Methodology
-I build a gaussian distribution `N(mu,sigma)` of performance for each team, with mean performance `mu` estimated either by FIFA ratings or FiveThirtyEight's WSPI ratings, and `sigma` estimated using the standard deviation of all team ratings in the Women's World Cup for convenience. With more effort, `sigma` can be tuned against the actual win-loss record between two teams.
+I build a gaussian distribution `np.normal(mu,sigma)` of performance for each team, with mean performance `mu` estimated either by FIFA ratings or FiveThirtyEight's WSPI ratings, and `sigma` estimated using the standard deviation of all team ratings in the Women's World Cup for convenience. With more effort, `sigma` can be tuned against the actual win-loss record between two teams.
 
 Then for each match, I sample once from each team's performance distribution, and record it as a tie (after regulation) if the results fall within `z = np.sqrt(2) * sigma` of each other (two-sample t-test with equal variance), a win for whichever team has the higher rating if the difference is greater than `z`. `z` can be tuned against the actual rate of ties between teams.
 
