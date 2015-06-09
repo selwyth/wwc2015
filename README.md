@@ -12,4 +12,11 @@ Then for each match, I sample once from each team's performance distribution, an
 
 By our rules, a win is awarded 2 points and a tie is awarded 1 point. These are only awarded for regulation, and the rules hold for knockout stages (e.g. if Team A beats Team B in extra time, both teams get 1 point, and Team A advances).
 
-The process is simulated 200 times. There is no iteration of results from each simulation into the next simulation, as I have not built any assumptions into or attempted to translate how match results and tournament performance update the performance distributions.
+The process is simulated 1000 times. There is no iteration of results from each simulation into the next simulation, as I have not built any assumptions into or attempted to translate how match results and tournament performance update the performance distributions.
+
+##Results
+More info in normmodels.ipynb.
+[!Score distribution using FTE](plots/scoredist.png)
+[!Probability of winning](plots/winners.png)
+[!Probability of getting to the semifinals](plots/top4.png)
+[!Probability of getting out of the group stage](plots/round16.png)

@@ -65,6 +65,7 @@ class mc(object):
         resultlist=[]
         
         for i in range(self.simulations):
+            # Simulate the group stage.
             matchdf['mean1'] = matchdf.team1.map(df[self.method]) # bring over the mean
             matchdf['mean2'] = matchdf.team2.map(df[self.method])
             matchdf['draw1'] = matchdf.mean1.map(lambda x: stats.norm(x, df[self.method].std()).rvs(1)[0]) # random pull from normdist
@@ -80,6 +81,7 @@ class mc(object):
             ranks = scores.rank(method='max')
             rklist.append(ranks)
             
+            # Find out who advances, breaking ties randomly by shuffling first, then using first method.
             grouprks = pd.concat({'score': scores, 'grp': df.group}, axis=1)
             grouprks = grouprks.groupby('grp').apply(lambda x: rank_tb(x.score))
             grouprks = pd.merge(grouprks.reset_index(), scores.reset_index(),
@@ -97,7 +99,8 @@ class mc(object):
             thirds.reset_index(inplace=True, drop=True)
             third = thirds[thirds.grouprk >= 3] # the top 4 3rd-placed finishers
             thirdlist.append(third)
-        
+            
+            # Set up the Round of 16.
             round16 = pd.DataFrame([
                 {'id':37, 'team1':second.team[second.grp=='A'].iloc[0],'team2':second.team[second.grp=='C'].iloc[0]},
                 {'id':40, 'team1':first.team[first.grp=='F'].iloc[0],'team2':second.team[second.grp=='E'].iloc[0]},
