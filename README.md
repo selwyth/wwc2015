@@ -16,7 +16,7 @@ The process is simulated 1000 times. There is no iteration of results from each 
 
 ##Results
 More info in normmodels.ipynb.
-[!Score distribution using FTE](plots/scoredist.png)
-[!Probability of winning](plots/winners.png)
-[!Probability of getting to the semifinals](plots/top4.png)
-[!Probability of getting out of the group stage](plots/round16.png)
+![Score distribution using FTE](plots/scoredist.png)
+![Probability of winning](plots/winners.png)
+![Probability of getting to the semifinals](plots/top4.png)
+![Probability of getting out of the group stage](plots/round16.png)
